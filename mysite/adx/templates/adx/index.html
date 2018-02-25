@@ -42,15 +42,18 @@
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="./"><img src=""></a>
-                <a class="navbar-brand hidden" href="./"><img src=""></a>
+                <a class="navbar-brand" href=""><img src="{% static 'images/logo.png' %}" alt="Logo"></a>
+                <a class="navbar-brand hidden" href=""><img src="{% static 'images/logo2.png' %}" alt="Logo"></a>
             </div>
 
+            {% block content %}
             <div id="main-menu" class="main-menu collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="index.html"> <i class=""></i>Dashboard </a>
+                        <a href="#"> <i class=""></i>Dashboard </a>
+                        {% if status == "on" %}
                         <a href="{% url 'create' %}">Create an Ad or Coupon</a>
+                        {% endif %}
                         <a href="{% url 'logout' %}">Log out</a>
                     </li>
                 </ul>
@@ -61,13 +64,11 @@
     <div id="right-panel" class="right-panel">
 
         <div style="padding-left: 3%; padding-top: 3%;">
-            <h1>Welcome to the AdX platform</h1>
+            <h1>Welcome {{name}}</h1>
             <p>Your advertisements:</p>
-            {% block content %}
             <table class="table table-inverse">
           <thead>
             <tr>
-              <th>#</th>
               <th>Title</th>
               <th>Location</th>
               <th>Date Start</th>
@@ -78,7 +79,6 @@
           <tbody>
             {%for element in context %}
             <tr>
-              <th scope="row">1</th>
               <td>{{ element.title }}</td>
               <td>{{ element.latitude }} lat; {{element.longitude}} long</td>
               <td>{{ element.startdate }}</td>

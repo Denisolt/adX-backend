@@ -35,7 +35,16 @@ def post_signin(request):
 	except:
 		message="invalid credentials"
 		return render(request,"adx/signIn.html",{"messg":message})
-	return render(request, "adx/index.html")
+	ad_list = []
+	vendorID = email
+	vendorID = vendorID.replace('@', '')
+	vendorID = vendorID.replace('.', '')
+	user_ads_keys = database.child("users").child(vendorID).child("ads").get()
+	for ad in user_ads_keys.each():
+		ad_list.append(database.child('ads').child(ad.val()).get().val())
+	name = database.child("users").child(vendorID).child('details').child('name').get().val()
+	status = database.child("users").child(vendorID).child('details').child('status').get().val()
+	return render(request,'adx/index.html', {'context': ad_list, 'name': name, 'status': status})
 
 def signup(request):
 	return render(request, "adx/signup.html")
@@ -52,11 +61,8 @@ def postsignup(request):
 	except:
 		message="Unable to create account try again"
 		return render(request,"adx/signup.html",{"messg":message})
-	data={"name":name,"status":"1"}
-	if(vendor=="on"):
-		database.child("users").child('vendor').child(ID).child("details").set(data)
-	else:
-		database.child("users").child('user').child(ID).child("details").set(data)
+	data={"name":name,"status":vendor}
+	database.child("users").child(ID).child("details").set(data)
 	return render(request,"adx/signIn.html")
 
 def create(request):
@@ -87,16 +93,18 @@ def post_create(request):
 	'vendorID' : vendorID,
 	'adID': adID,
 	}
+	ad_list = []
 	if(longitude==None):
 		print('no long')
 	else:
-		ad_list = []
 		database.child('ads').child(adID).set(data)
-		database.child('users').child('vendor').child(vendorID).child('ads').child(adID).set(adID)
-	user_ads_keys = database.child("users").child("vendor").child(vendorID).child("ads").get()
+		database.child('users').child(vendorID).child('ads').child(adID).set(adID)
+	user_ads_keys = database.child("users").child(vendorID).child("ads").get()
 	for ad in user_ads_keys.each():
 		ad_list.append(database.child('ads').child(ad.val()).get().val())
-	return render(request,'adx/index.html', {'context': ad_list})
+	name = database.child("users").child(vendorID).child('details').child('name').get().val()
+	status = database.child("users").child(vendorID).child('details').child('status').get().val()
+	return render(request,'adx/index.html', {'context': ad_list, 'name': name, 'status': status})
 
 def log_out(request):
 	auth.logout(request)
