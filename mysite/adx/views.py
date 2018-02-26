@@ -68,6 +68,8 @@ def postsignup(request):
 def create(request):
 	return render(request,'adx/create.html')
 
+from werkzeug.utils import secure_filename
+
 def post_create(request):
 	title = request.POST.get('title')
 	longitude = request.POST.get('longitude')
@@ -75,6 +77,7 @@ def post_create(request):
 	startdate = request.POST.get('startdate')
 	enddate = request.POST.get('enddate')
 	idtoken= request.session['uid']
+	file = request.FILES['file']
 	a = authen.get_account_info(idtoken)
 	a = a['users']
 	a = a[0]
@@ -92,6 +95,7 @@ def post_create(request):
 	'enddate' : enddate,
 	'vendorID' : vendorID,
 	'adID': adID,
+	'address': storage.child("ads").child(vendorID).child(adID).get_url(None),
 	}
 	ad_list = []
 	if(longitude==None):
@@ -99,6 +103,7 @@ def post_create(request):
 	else:
 		database.child('ads').child(adID).set(data)
 		database.child('users').child(vendorID).child('ads').child(adID).set(adID)
+		storage.child("ads").child(vendorID).child(adID).put(file)
 	user_ads_keys = database.child("users").child(vendorID).child("ads").get()
 	for ad in user_ads_keys.each():
 		ad_list.append(database.child('ads').child(ad.val()).get().val())

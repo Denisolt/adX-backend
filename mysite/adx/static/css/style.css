@@ -98,7 +98,7 @@ img {
   width: 100%; }
 
 aside.left-panel {
-  background: #272c33;
+  background: #2A2D4A;
   display: table-cell;
   height: 100vh;
   min-height: 100%;
@@ -108,7 +108,7 @@ aside.left-panel {
   transition: width 0.3s ease; }
 
 .navbar {
-  background: #272c33;
+  background: #2A2D4A;
   border-radius: 0;
   border: none;
   display: block;
@@ -211,7 +211,7 @@ aside.left-panel {
           .navbar .navbar-nav li.menu-item-has-children a:hover:before {
             color: #fff; }
         .navbar .navbar-nav li.menu-item-has-children .sub-menu {
-          background: #272c33;
+          background: #2A2D4A;
           border: none;
           box-shadow: none;
           overflow-y: hidden;
@@ -387,7 +387,7 @@ header.fixed-top {
 .search-trigger {
   background: transparent;
   border: none;
-  color: #272c33;
+  color: #2A2D4A;
   cursor: pointer;
   font-size: 16px;
   height: 41px;
@@ -452,7 +452,7 @@ header .form-inline {
   .header-left .dropdown .dropdown-toggle {
     background: transparent;
     border: none;
-    color: #272c33;
+    color: #2A2D4A;
     font-size: 16px; }
     .header-left .dropdown .dropdown-toggle:after {
       display: none; }
@@ -477,7 +477,7 @@ header .form-inline {
       margin: 0;
       padding: 5px 15px; }
     .header-left .dropdown .dropdown-menu .dropdown-item {
-      color: #272c33;
+      color: #2A2D4A;
       font-size: 13px;
       padding: 10px 15px 3px;
       text-overflow: ellipsis; }
@@ -537,7 +537,7 @@ header .form-inline {
     z-index: 999;
     min-width: 150px; }
     .user-area .user-menu .nav-link {
-      color: #272c33;
+      color: #2A2D4A;
       display: block;
       font-size: 14px;
       line-height: 22px;
