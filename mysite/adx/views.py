@@ -16,11 +16,10 @@ storage=firebase.storage()
 authen = firebase.auth()
 
 def index(request):
-	session_id=user['idToken']
-	request.session['uid']=str(session_id)
-	all_ads = database.child("ads").get(user['idToken']).val()
-	print(all_ads)
 	return render(request,'adx/index.html')
+
+def about(request):
+	return render(request,'adx/about.html')
 
 def signIn(request):
 	return render(request, "adx/signIn.html")
@@ -40,8 +39,11 @@ def post_signin(request):
 	vendorID = vendorID.replace('@', '')
 	vendorID = vendorID.replace('.', '')
 	user_ads_keys = database.child("users").child(vendorID).child("ads").get()
-	for ad in user_ads_keys.each():
-		ad_list.append(database.child('ads').child(ad.val()).get().val())
+	try:
+		for ad in user_ads_keys.each():
+			ad_list.append(database.child('ads').child(ad.val()).get().val())
+	except:
+		ad_list = []
 	name = database.child("users").child(vendorID).child('details').child('name').get().val()
 	status = database.child("users").child(vendorID).child('details').child('status').get().val()
 	return render(request,'adx/index.html', {'context': ad_list, 'name': name, 'status': status})

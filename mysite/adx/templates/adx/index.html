@@ -54,6 +54,7 @@
                         {% if status == "on" %}
                         <a href="{% url 'create' %}">Create an Ad or Coupon</a>
                         {% endif %}
+                        <a href="/about">About us</a>
                         <a href="{% url 'logout' %}">Log out</a>
                     </li>
                 </ul>
@@ -76,7 +77,7 @@
               <th>Image</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody>{% if context %}
             {%for element in context %}
             <tr>
               <td>{{ element.title }}</td>
@@ -85,7 +86,8 @@
               <td>{{ element.enddate }}</td>
               <td><img src="{{ element.address }}" height="170px"> </td>
             </tr>
-            {% endfor %}            
+            {% endfor %} 
+            {% endif %}           
           </tbody>
         </table>
         </div>

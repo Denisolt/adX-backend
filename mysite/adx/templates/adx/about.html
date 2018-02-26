@@ -1,11 +1,5 @@
 {% load staticfiles %}
 
-{% if messg %}
-<script>
-    alert('{{ messg }}');
-</script>
-{% endif %}
-
 <!doctype html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
@@ -14,8 +8,8 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>adX Dashboard</title>
-    <meta name="description" content="adX">
+    <title>AdX</title>
+    <meta name="description" content="AdX">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <link rel="apple-touch-icon" href="apple-icon.png">
@@ -29,45 +23,47 @@
     <link rel="stylesheet" href="{% static 'css/cs-skin-elastic.css' %}">
     <!-- <link rel="stylesheet" href="assets/css/bootstrap-select.less"> -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <!-- <link rel="stylesheet" href="assets/css/bootstrap-select.less"> -->
+    <link href="{% static 'css/lib/vector-map/jqvmap.min.css' %}" rel="stylesheet">
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
 
     <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
 
 </head>
-<body class="bg-dark" style="text-align: center;">
-    <div class="sufee-login d-flex align-content-center flex-wrap"">
-        <div class="container">
-            <div class="login-content">
-                <div class="login-logo">
-                    <a>
-                        <img class="align-content" src="{% static 'images/logo.png' %}" alt="">
-                    </a>
-                </div>
-                <div class="login-form">
-                    <form action="/postsignup/" method="post">{% csrf_token %}
-                        <p style="color: white;"> Name: </p> 
-                        <input type="text" name="name" required> <br>
-                       <p style="color: white;"> Email: </p>
-                        <input type="email" name="email" required> <br>
-                        <p style="color: white;"> Password: </p> 
-                        <input type="password" name="pass" required> <br>
-                        <p style="color: white;"> Vendor: </p>
-                        <input type="checkbox" name="vendor"> <br>
-                        <input type="submit" value="SignUp">
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
+<body>
 
 
+        <!-- Left Panel -->
+<div class="row">
+    <div id="right-panel" class="right-panel">
+
+        <div style="padding-left: 3%; padding-top: 3%; max-width: 800px">
+            <h1>adX Agency</h1>
+<p>adX Agency was created by Denisolt Shakhbulatov and Arshit Arora. Software Engineers workinh in Machine Learning, exploring BlockChain and building fun projects. </p>
+<p>adX consists of 3 parts:</p>
+<ul>
+<li>- Web app on Django and Firebase</li>
+<li>- Android app with Augmented Reality, Mapbox and Firebase</li>
+<li>- NEO blockchain.</li>
+
+</ul>
+<p>adX is a novel tool for different vendors (cafe, restaurants, stores, etc) to engage people in collecting ads or coupons. On adX vendors can select how many NEO tokens they want to distribute, location of the advertisement and the actual image of the ad or coupon. Regular users utilize the android app to check the map and go to specific location. The moment they reach to destination, users click on the second window and can see the ad flowing in the air. By clicking on the image, they save the coupon and receive 50% of the tokens that vendors decided to give away. adX is a fun way to collect ads and coupons and get paid in NEO as well. </p>
+<p>Check the source code on:</p>
+<ul>
+<li> Github.com/denisolt/adx-backend</li>
+<li>GitHub.com/aarora/adx</li>
+
+</ul>
+<hr />
+<p>Give us some feedback, on Telegram: @DeniShakh or on Github Issues.</p>
+
+            <!--/.col-->
+    <!-- Right Panel -->
+</div>
+</div>
     <script src="{% static 'js/vendor/jquery-2.1.4.min.js' %}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
     <script src="{% static 'js/main.js' %}"></script>
-    <script src="{% static 'js/popper.min.js' %}"></script>
-    <script src="{% static 'js/plugins.js' %}"></script>
 
 </body>
 </html>
