@@ -3,11 +3,11 @@ from django.http import HttpResponse
 import pyrebase
 from django.contrib import auth
 config = {
-  "apiKey": "AIzaSyC8SpE7w0Zisz5-NhRwNoMNfiY36cpMAVQ",
-  "authDomain": "wisper-1773e.firebaseapp.com",
-  "databaseURL": "https://wisper-1773e.firebaseio.com",
-  "storageBucket": "wisper-1773e.appspot.com",
-  "messagingSenderId": "325348010767"
+  "apiKey": "AIzaSyDf3djXenhgEX5teIK7QBE-FnZCnalehfQ",
+  "authDomain": "adxfirebaseproject.firebaseapp.com",
+  "databaseURL": "https://adxfirebaseproject.firebaseio.com/",
+  "storageBucket": "adxfirebaseproject.appspot.com",
+  "messagingSenderId": "443675777784"
 }
 
 firebase = pyrebase.initialize_app(config)
