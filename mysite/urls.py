@@ -23,8 +23,3 @@ urlpatterns = [
     url(r'', include('adx.urls')),
     url(r'^admin/', admin.site.urls),
 ]
-
-if not settings.DEBUG:
-    urlpatterns += ('',
-        (r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.STATIC_ROOT}),
-    )
