@@ -15,10 +15,16 @@ Including another URLconf
 """
 from django.urls import include, path
 from django.conf.urls import include, url
-
+#from django.conf.urls.defaults import patterns
+from mysite import settings
 from django.contrib import admin
 
 urlpatterns = [
     url(r'', include('adx.urls')),
     url(r'^admin/', admin.site.urls),
 ]
+
+if not settings.DEBUG:
+    urlpatterns += ('',
+        (r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.STATIC_ROOT}),
+    )
