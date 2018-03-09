@@ -1,1 +1,1 @@
-web: gunicorn adX.wsgi
+web: gunicorn mysite.wsgi
